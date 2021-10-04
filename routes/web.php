@@ -1,5 +1,9 @@
 <?php
 
+// JANGAN lupa import URL controllernya
+use App\Http\Controllers\DataSiswaController;
+use App\Http\Controllers\UserController;
+
 use Illuminate\Routing\RouteGroup;
 use Illuminate\Support\Facades\Route;
 
@@ -43,9 +47,6 @@ Route::get('/nama-saya/{nama?}', function ($nama = null) {
     return 'Nama saya ' . $nama;
 });
 
-Route::get('/nama/{nama?}', function ($nama = 'wajib diisi') {
-    return 'Nama saya ' . $nama;
-});
 
 // latihan
 Route::get('/luas-segitiga/{tinggi?}/{alas?}', function ($tinggi = 1, $alas = 1) {
@@ -57,18 +58,6 @@ Route::get('/luas-segitiga/{tinggi?}/{alas?}', function ($tinggi = 1, $alas = 1)
 });
 
 //Route group
-Route::prefix('jurusan')->group(function () {
-    Route::get('/', function () {
-        return 'Berhasil';
-    });
-    Route::get('/kelas/{namaKelas}', function ($namaKelas) {
-        return $namaKelas;
-    });
-    Route::get('/wali-kelas/{nama}', function ($nama) {
-        return $nama;
-    });
-});
-
 Route::group(['prefix'=>'jurusan'], function () {
     Route::get('/', function () {
         return 'Berhasil';
@@ -80,3 +69,10 @@ Route::group(['prefix'=>'jurusan'], function () {
         return $nama;
     });
 });
+
+//membuat route untuk controller
+Route::get('data-siswa', [DataSiswaController::class, 'dataSiswa']);
+Route::get('data-siswi', [DataSiswaController::class, 'dataSiswi']);
+Route::get('nama/{nama?}', [DataSiswaController::class, 'nama']);
+
+Route::resource('user', UserController::class);
