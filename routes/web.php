@@ -92,3 +92,7 @@ Route::get('profile', function () {
 Route::get('ganjil', function () {
         return view('profile.ganjil');
     });
+
+Route::get('album', function () {
+        return view('album');
+    });
