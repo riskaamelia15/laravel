@@ -76,3 +76,19 @@ Route::get('data-siswi', [DataSiswaController::class, 'dataSiswi']);
 Route::get('nama/{nama?}', [DataSiswaController::class, 'nama']);
 
 Route::resource('user', UserController::class);
+
+// https://bit.ly/laravel-pertemuan-3
+
+//membuat route untuk untuk blade
+Route::get('profile', function () {
+        return view('profile.index');
+    });
+
+// Yang ini tidak disaran
+// Route::get('profile/{nama}', function ($nama) {
+//         return view('profile.detail', ['nama_user' => 'Riska']);
+//     });
+
+Route::get('ganjil', function () {
+        return view('profile.ganjil');
+    });
