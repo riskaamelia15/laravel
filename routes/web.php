@@ -19,7 +19,7 @@ use Illuminate\Support\Facades\Route;
  */
 
 Route::get('/', function () {
-    return 'Hallo pak';
+    return view('index');
 });
 
 Route::get('laravel', function () {
@@ -93,6 +93,6 @@ Route::get('ganjil', function () {
         return view('profile.ganjil');
     });
 
-Route::get('album', function () {
+Route::get('adxddnfny', function () {
         return view('album');
-    });
+    })->name('album');
